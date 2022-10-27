@@ -1,0 +1,496 @@
+<%- include('header') -%>
+<head><title>Filmlane - Home</title></head>
+    <main>
+      <article>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-content">
+              <p class="hero-subtitle">Filmlane</p>
+              <% if(user === null) { %>
+              <h1 class="h1 hero-title">
+                Unlimited <strong>Movie</strong>, TVs Shows, & More.
+              </h1>
+              <button class="btn btn-primary">
+                <ion-icon name="play"></ion-icon>
+                <a href="/login" style="color: white;"><span>Sign up</span></a>
+              </button>
+              <% } else { %>
+                <h1 class="h1 hero-title">
+                  Welcome <%= user.name %>. Now You're A Part of Our <strong>Family</strong>
+                </h1>
+              <% } %>
+            </div>
+          </div>
+        </section>
+
+        <!-- 
+        - #UPCOMING
+      -->
+
+        <section class="upcoming">
+          <div class="container">
+            <div class="flex-wrapper">
+              <div class="title-wrapper">
+                <p class="section-subtitle">Online Streaming</p>
+
+                <h2 class="h2 section-title">Last Added</h2>
+              </div>
+            </div>
+
+            <ul class="movies-list has-scrollbar">
+              <% for(let i=4; i<12; i++){ %>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[i].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[i].image %>"
+                        alt="Memory movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[i].title %>">
+                      <h3 class="card-title"><%= result[i].title.replace('فيلم', '').replace('مترجم اون لاين', '').replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline">
+                      <%= result[i].quality %>
+                    </div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="">N/A</time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+
+                      <data><%= result[i].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </section>
+        <!-- 
+        - #TOP RATED
+      -->
+
+        <section class="top-rated">
+          <div class="container">
+            <p class="section-subtitle">Online Streaming</p>
+
+            <h2 class="h2 section-title">Most Popular</h2>
+            <ul class="movies-list">
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[167].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[167].image %>"
+                        alt="<%= result[167].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[167].title %>">
+                      <h3 class="card-title"><%= result[167].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[167].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[167].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[167].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[185].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[185].image %>"
+                        alt="<%= result[185].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[185].title %>">
+                      <h3 class="card-title"><%= result[185].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[185].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[185].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[185].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[242+6].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[242+6].image %>"
+                        alt="<%= result[242+6].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[242+6].title %>">
+                      <h3 class="card-title"><%= result[242+6].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[242+6].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[242+6].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[242+6].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[903+69].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[903+69].image %>"
+                        alt="<%= result[903+69].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[903+69].title %>">
+                      <h3 class="card-title"><%= result[903+69].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[903+69].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[903+69].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[903+69].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[82].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[82].image %>"
+                        alt="<%= result[82].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[82].title %>">
+                      <h3 class="card-title"><%= result[82].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[82].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[82].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[82].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[80].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[80].image %>"
+                        alt="<%= result[80].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[80].title %>">
+                      <h3 class="card-title"><%= result[80].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[80].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[80].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[80].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[413+6].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[413+6].image %>"
+                        alt="<%= result[413+6].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[413+6].title %>">
+                      <h3 class="card-title"><%= result[413+6].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[413+6].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[413+6].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[413+6].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= result[167+6].title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= result[167+6].image %>"
+                        alt="<%= result[167+6].title.replace('فيلم', '').replace('مترجم اون لاين', '') %> movie poster"
+                      />
+                    </figure>
+                  </a>
+
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= result[167+6].title %>">
+                      <h3 class="card-title"><%= result[167+6].title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+
+                    <time datetime="2022">N/A</time>
+                  </div>
+
+                  <div class="card-meta">
+                    <div class="badge badge-outline"><%= result[167+6].quality %></div>
+
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT122M"><%= result[167+6].duration.replace('دقيقة', 'min') %></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+                      <data><%= result[167+6].rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+       
+
+        <section class="service">
+          <div class="container">
+            <div class="service-banner">
+              <figure>
+                <img
+                  src="/assets/images/service-banner.jpg"
+                  alt="HD 4k resolution! only $3.99"
+                />
+              </figure>
+
+              <a
+                href="/Sign-In"
+                class="service-btn"
+              >
+                <span>Start Now</span>
+
+                <ion-icon name="download-outline"></ion-icon>
+              </a>
+            </div>
+
+            <div class="service-content">
+              <p class="service-subtitle">Our Services</p>
+
+              <h2 class="h2 service-title">
+                Download Your Shows Watch Offline.
+              </h2>
+
+              <p class="service-text">
+                Lorem ipsum dolor sit amet, consecetur adipiscing elseddo
+                eiusmod tempor.There are many variations of passages of lorem
+                Ipsum available, but the majority have suffered alteration in
+                some injected humour.
+              </p>
+
+              <ul class="service-list">
+                <li>
+                  <div class="service-card">
+                    <div class="card-icon">
+                      <ion-icon name="tv"></ion-icon>
+                    </div>
+
+                    <div class="card-content">
+                      <h3 class="h3 card-title">Enjoy Watching Movies</h3>
+
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consecetur adipiscing elit,
+                        sed do eiusmod tempor.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="service-card">
+                    <div class="card-icon">
+                      <ion-icon name="videocam"></ion-icon>
+                    </div>
+
+                    <div class="card-content">
+                      <h3 class="h3 card-title">Watch Everywhere.</h3>
+
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consecetur adipiscing elit,
+                        sed do eiusmod tempor.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 
+        - #CTA
+      -->
+
+        <section class="cta">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 class="cta-title">Register Now</h2>
+
+              <p class="cta-text">
+                Enter your email to create your account.
+              </p>
+            </div>
+
+            <form action="" class="cta-form">
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+                class="email-field"
+              />
+
+              <button type="submit" class="cta-form-btn">Get started</button>
+            </form>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- 
+    - #FOOTER
+  -->
+
+ <%- include('footer') -%>
+    <!-- 
+    - #GO TO TOP
+  -->
+
+    <a href="#top" class="go-top" data-go-top>
+      <ion-icon name="chevron-up"></ion-icon>
+    </a>
+  </body>
+</html>

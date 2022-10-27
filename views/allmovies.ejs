@@ -1,0 +1,72 @@
+<%- include('header') -%>
+
+<head><title>Filmlane - Movies</title></head>
+<main>
+  <article>
+    <div class="homepage__bg" style="background-image: url('https://tuktukcinema.co/wp-content/uploads/2022/06/lela-1.png');"></div>
+    <section class="upcoming"style="margin-top:40px;">
+      <div class="container">
+      <ul class="movies-list">
+      <% movie.forEach(mov => { %>
+          <li>
+              <div class="movie-card">
+                <a href="/movies/<%= mov.title %>">
+                  <figure class="card-banner">
+                    <img
+                      src="<%= mov.image %>"
+                      alt="Memory movie poster"
+                    />
+                  </figure>
+                </a>
+      
+                <div class="title-wrapper">
+                  <a href="/movies/<%= mov.title %>">
+                    <h3 class="card-title"><%= mov.title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                  </a>
+      
+                  <time datetime="2022">N/A</time>
+                </div>
+      
+                <div class="card-meta">
+                  <div class="badge badge-outline">
+                    <%= mov.quality %>
+                  </div>
+      
+                  <div class="duration">
+                    <ion-icon name="time-outline"></ion-icon>
+      
+                    <time datetime=""><%= mov.duration.replace('دقيقة', 'min') %></time>
+                  </div>
+      
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+      
+                    <data><%= mov.rating %></data>
+                  </div>
+                </div>
+              </div>
+            </li>
+      
+      <% }) %>
+      </ul>
+      </div>
+      <section>
+        <div class="pages">
+          <% if(page > 1) { %> <a href="?page=<%=page-1%>"><ion-icon style="margin-top:4px;" name="caret-back-outline"></ion-icon></a> <% } %>
+          <% for(i = iterator ; i <= endingLink; i++) { %>
+         <% if(i === page) { %>
+          <a href="?page=<%=i%>"><%=i%></a>        
+         <% continue; %>
+          <% } %>
+          <a href="?page=<%=i%>"><%=i%></a>
+          <% } %>
+          <a href="?page=<%=totalPages%>"><%= totalPages %></a>
+          <% if(page < totalPages) { %> <a href="?page=<%=page+1%>"><ion-icon style="margin-top:4px;" name="caret-forward-outline"></ion-icon></a> <% } %>    
+        </div>
+      </section>
+      </section>
+  </article>
+</main>
+<%- include('footer') -%>
+</body>
+</html>
