@@ -33,11 +33,6 @@ const checkUser = (req, res, next) => {
                 console.log(decodedToken)
                 let user = await User.findById(decodedToken.id)
                 res.locals.user = user
-                // if(favorites) {                
-                //     console.log(favorites)
-                //     const new_Fav = await User.findOneAndUpdate({ _id: decodedToken.id }, { $push: { favorite: favorites }})
-                //     console.log(new_Fav)
-                // }
                 next()
             }
         })
