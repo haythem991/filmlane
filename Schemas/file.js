@@ -2,10 +2,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 dotenv.config()
 const mongoosePaginate = require('mongoose-paginate-v2')
-mongoose.connect(process.env.MONGO_URI, (err)=> {
-    if(!err) console.log("Connected successfully")
-    else console.log("Failed to connect")
-})
+
 const MovieSchema = new mongoose.Schema({
     title: String,
     image: String,
