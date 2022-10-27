@@ -19,7 +19,7 @@ dotenv.config()
 const port = process.env.PORT || 8080
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/views'));
-mongoose.connect(process.env.MONGO_URI ,{useNewUrlParser:true}, () => console.log('Connect to db'))
+mongoose.connect(process.env.MONGO_URI ,{ useUnifiedTopology:true, useNewUrlParser: true, useCreateIndex: true}, () => console.log('Connected to db'))
 
 
 app.get('*', checkUser)
