@@ -214,6 +214,6 @@ app.get('/movies', async (req, res)=> {
 })
 
 
-app.listen(8080, () => {
+app.listen(process.env.PORT, () => {
     console.log('Listening on 8080')
 })
