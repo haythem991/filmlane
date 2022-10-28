@@ -16,6 +16,7 @@ app.use(express.json())
 app.use(authRoutes)
 app.use(cookieParser())
 dotenv.config()
+const port = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/views'));
 mongoose.connect(process.env.MONGO_URI ,{ useNewUrlParser: true }, () => console.log('Connected to db'))
@@ -214,6 +215,6 @@ app.get('/movies', async (req, res)=> {
 })
 
 
-app.listen(process.env.PORT || 8080, () => {
+app.listen(port, () => {
     console.log('Listening on 8080')
 })
