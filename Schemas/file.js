@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 dotenv.config()
+mongoose.connect(process.env.MONGO_URI ,{ useNewUrlParser: true }, () => console.log('Connected to db'))
 const mongoosePaginate = require('mongoose-paginate-v2')
 
 const MovieSchema = new mongoose.Schema({
