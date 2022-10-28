@@ -1,0 +1,108 @@
+<%- include('header') -%>
+<head><title>Filmlane - <%= movie[0].title %></title></head>
+<body>
+<main>
+      <article dir="rtl">
+        <section class="movie-detail">
+          <div class="container">
+            <a href="/movies/<%= movie[0].title %>/watch">
+            <figure class="movie-detail-banner">
+              <img
+                src="<%= movie[0].image %>"
+                alt="<%= movie[0].title %> movie poster"
+              />
+              <button class="play-btn">
+                <ion-icon name="play-circle-outline"></ion-icon>
+              </button>
+            </figure>
+          </a>
+
+            <div class="movie-detail-content">
+              <h2 class="h2 detail-title"><%= movie[0].title %></h2>
+              <div class="meta-wrapper">
+                <div class="badge-wrapper">
+                  <div class="badge badge-outline"><%= movie[0].quality %></div>
+                </div>
+
+                <div class="ganre-wrapper">
+                  <% if(Object.keys(movie_[0].category[1]).length > 1) { %>
+                  <a href="/category/<%= movie[0].category[1] %>"><%= movie[0].category[1] %></a>
+                  <a href="/category/<%= movie[0].category[2] %>"><%= movie[0].category[2] %></a>
+                  <% } else { %>
+                    <a href="/category/<%= movie[0].category %>"><%= movie[0].category %></a>
+                  <% } %>
+                </div>
+                <div class="date-time">
+                  <div>
+                    <ion-icon name="star"></ion-icon>
+                    <p><%= movie[0].rating %></p>
+                  </div>
+                  <div>
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    <time datetime="2021"><%= movie[0].year %></time>
+                  </div>
+                  <div>
+                    <ion-icon name="time-outline"></ion-icon>
+                    <time datetime="PT115M"><%= movie[0].duration %></time>
+                  </div>
+                  <div>
+                    <ion-icon name="flag"></ion-icon>
+                    <p><%= movie[0].country %></p>
+                  </div>
+
+                </div>
+              </div>
+
+              <p class="storyline"><%= movie[0].story %></p>
+
+            </div>
+              <div class="details-actions">
+                <button class="btn btn-primary">
+                  <ion-icon name="videocam"></ion-icon>
+                  <a href="<%= movie[0].trailer %>" target="_blank" style="color: #fff;"><span>IMBd Trailer</span></a>
+                </button>
+                <button class="btn btn-primary">
+                  <ion-icon name="play"></ion-icon>
+                  <a href="/movies/<%= movie[0].title %>/watch" style="color: #fff;"><span>Watch Now</span></a>
+                </button>
+                <button id="add" class="btn btn-primary">
+                  <ion-icon name="hourglass"></ion-icon>
+                  <span>Add To Watchlist</span>
+                </button>
+            </div>
+          </div>
+        <div class="iframe">
+          <iframe src="<%= movie[0].trailer %>" scrolling="no" frameborder="0" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>          
+        </div>
+        </section>
+
+      </article>
+    </main>
+
+  <%- include('footer') -%>
+
+
+    <a href="#top" class="go-top" data-go-top>
+      <ion-icon name="chevron-up"></ion-icon>
+    </a>
+    <script>
+      const btn = document.querySelector('#add')
+      const title = document.querySelector('.h2').textContent
+      btn.addEventListener('click', async() => {
+        const request = await fetch('/watch-later', {
+          method: "POST",
+          body: JSON.stringify({ favorite: title }),
+          headers: { 'Content-Type' : 'application/json'}
+        })
+        const response = await request.json()
+        if (response === "Already Exists") {
+          alert('This movie already exists in your watchlist')
+        }
+        else {
+          alert("Movie added successfully")
+          location.assign('/watchlist')
+        }
+      })
+    </script>
+</body>
+</html>

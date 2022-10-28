@@ -1,0 +1,60 @@
+<%- include('header') -%>
+
+<main>
+  <article>
+    <div class="homepage__bg" style="background-image: url('https://tuktukcinema.co/wp-content/uploads/2022/06/lela-1.png');"></div>
+    <section class="upcoming"style="margin-top:40px;">  
+      <div class="container">
+        <ul class="movies-list">
+        <% movies.forEach(mov => { %>
+            <li>
+                <div class="movie-card">
+                  <a href="/movies/<%= mov.title %>">
+                    <figure class="card-banner">
+                      <img
+                        src="<%= mov.image %>"
+                        alt="Memory movie poster"
+                      />
+                    </figure>
+                  </a>
+        
+                  <div class="title-wrapper">
+                    <a href="/movies/<%= mov.title %>">
+                      <h3 class="card-title"><%= mov.title.replace('فيلم', '').replace('مترجم اون لاين', '') %></h3>
+                    </a>
+        
+                    <time datetime="2022">N/A</time>
+                  </div>
+        
+                  <div class="card-meta">
+                    <div class="badge badge-outline">
+                      <%= mov.quality %>
+                    </div>
+        
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+        
+                      <time datetime="">N/A</time>
+                    </div>
+        
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+        
+                      <data><%= mov.rating %></data>
+                    </div>
+                  </div>
+                </div>
+              </li>
+        <% }) %>
+        </ul>
+        </div>
+    </section>
+  </article>
+</main>
+<a href="#top" class="go-top" data-go-top>
+  <ion-icon name="chevron-up"></ion-icon>
+</a>
+<%- include('footer') -%>
+
+</body>
+</html>

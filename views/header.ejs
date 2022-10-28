@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      descryption
+      content="Our movie website is all yours. Explore, watch and Download the latest movies"
+    />
+    <meta
+      name="keywords"
+      content="movies, series, streaming, tv show, watch movies"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css "
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body id="#top">
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header dir="ltr">
+      <div class="container">
+        <div class="overlay" data-overlay></div>
+
+        <a href="/home" class="logo">
+          <img src="/assets/images/logo.svg" alt="Filmlane logo" />
+        </a>
+
+        <div class="header-actions">
+          <div class="search" id="">
+            <form action="/search" method="get" style="display: flex">
+              <input
+                type="text"
+                name="s"
+                placeholder="Search..."
+                class="inputs"
+              />
+              <button type="submit">
+                <ion-icon
+                  style="color: #fff; padding: 5px"
+                  name="search"
+                ></ion-icon>
+              </button>
+            </form>
+          </div>
+
+          <% if(user === null) { %>
+          <a href="/login" style="color: #fff"
+            ><button id="login" class="btn btn-primary">Login</button></a
+          >
+          <% } else { %>
+          <div class="menu-container">
+            <button class="menu-button">
+              <img src="http://i.pravatar.cc/50" /><span class="title"><%= user.name %></span>
+            </button>
+            <div class="menu-dropdown">
+              <div class="content">
+                <ul>
+                  <li>
+                    <ion-icon name="play-circle"></ion-icon
+                    ><a href="/watchlist">Watchlist</a>
+                  </li>
+                  <li>
+                    <ion-icon name="log-out"></ion-icon
+                    ><a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+
+        <button class="menu-open-btn" data-menu-open-btn>
+          <ion-icon name="reorder-two"></ion-icon>
+          <% if(user === null) { %>
+            <a id="log" href="/login" style="color: #fff"
+              ><button id="login" class="btn btn-primary">Login</button></a>
+            <% } else { %>
+              <a id="log" href="/logout" style="color: #fff"
+              ><button class="btn btn-primary">Logout</button></a>              
+            <% } %>
+        </button>
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="/home" class="logo">
+              <img src="./assets/images/logo.svg" alt="Filmlane logo" />
+            </a>
+
+            <button class="menu-close-btn" data-menu-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+            <li>
+              <a href="/home" class="navbar-link">Home</a>
+            </li>
+
+            <li>
+              <a href="/movies" class="navbar-link">Movies</a>
+            </li>
+            <li>
+              <a href="/contact-us" class="navbar-link">Contact US</a>
+            </li>
+            <li id="searching">
+              <div class="search" id="">
+                <form action="/search" method="get" style="display: flex">
+                  <input
+                    type="text"
+                    name="s"
+                    placeholder="Search..."
+                    class="inputs"
+                  />
+                  <button type="submit">
+                    <ion-icon
+                      style="color: #fff; padding: 5px"
+                      name="search"
+                    ></ion-icon>
+                  </button>
+                </form>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="navbar-social-list">
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>

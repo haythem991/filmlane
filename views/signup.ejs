@@ -1,0 +1,149 @@
+<html lang="en">
+  <head>
+    <title>Filmlane - Sign up</title>
+    <meta name="author" content="" />
+    <meta
+      descryption
+      content="Our movie website is all yours. Explore, watch and Download the latest movies"
+    />
+    <meta
+      name="keywords"
+      content="movies, series, streaming, tv show, watch movies"
+    />
+    <meta http-equiv="refresh" content="100" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://localhost:8080/assets/css/style1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+    @media only screen and (max-width: 600px) {
+      .navbar {
+        display: none;        
+      }
+    }
+    </style>
+    <nav class="navbar">
+      <div class="navbar-top">
+        <a href="/home" class="logo">
+          <img src="./assets/images/logo.svg" alt="Filmlane logo" />
+        </a>
+      </div>
+    </nav>
+    <div class="container" id="container" style="margin: 5%">
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1>Welcome Back!</h1>
+            <p>
+              If you already have an account, Please login your personal info
+            </p>
+            <div class="group button-group">
+              <a href="/login"
+                ><button class="ghost" id="signIn">Sign in</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-container sign-in-container">
+        <form id="form">
+          <div class="header">Sign Up</div>
+          <div class="social__media__container">
+            <a href="" target="_blank" class="social codepen">
+              <i class="fa-brands fa-codepen"></i>
+            </a>
+            <a href="#" class="social google">
+              <i class="fa-brands fa-google"></i>
+            </a>
+            <a href="" target="_blank" class="social instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+          <span class="under__social">
+            <a href="#" class="link signup-link"
+              >or use your email for registration</a
+            >
+          </span>
+
+          <div class="button-input-group">
+            <div class="group input-group">
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                id="name"
+                required
+              />
+            </div>
+            <div class="group input-group">
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="group input-group">
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                name="password"
+                required
+                pattern=".{8,}"
+              />
+            </div>
+            <div class="alert-text signup__alert">
+              <span class="help__text">At least 8 character</span>
+            </div>
+            <div id="email-error" style="color: #cc3333;padding: 5px;"></div>
+            <div class="group button-group">
+              <button class="signin-btn">Signup</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const emailError = document.querySelector('#email-error')
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        emailError.textContent = ''
+
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        try {
+          const result = await fetch("/signup", {
+            method: "POST",
+            body: JSON.stringify({ name, email, password }),
+            headers: { "Content-Type": "application/json" },
+          });
+          const data = await result.json()
+          console.log(data)
+          if(data.errors) {
+            emailError.textContent = data.errors.email                               
+          }
+          if (data.user) {
+            location.assign('/home')
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>
